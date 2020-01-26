@@ -1,0 +1,56 @@
+{
+	"name": "@naval-base/ms",
+	"version": "3.0.0",
+	"description": "Millisecond conversion utility",
+	"main": "dist/index.js",
+	"typings": "typings/index.d.ts",
+	"author": "iCrawl <icrawltogo@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"prebuild": "pnpm run lint",
+		"build": "tsc",
+		"lint": "eslint src --ext .ts",
+		"pretest": "pnpm run lint",
+		"test": "jest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Naval-Base/ms.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Naval-Base/ms/issues"
+	},
+	"homepage": "https://github.com/Naval-Base/ms#readme",
+	"devDependencies": {
+		"@types/jest": "^24.9.1",
+		"@types/node": "^13.5.0",
+		"@typescript-eslint/eslint-plugin": "^2.17.0",
+		"@typescript-eslint/parser": "^2.17.0",
+		"eslint": "^6.8.0",
+		"eslint-config-marine": "^6.0.0",
+		"eslint-config-prettier": "^6.9.0",
+		"eslint-plugin-prettier": "^3.1.2",
+		"jest": "^25.1.0",
+		"prettier": "^1.19.1",
+		"ts-jest": "^25.0.0",
+		"typescript": "^3.7.5"
+	},
+	"eslintConfig": {
+		"extends": "marine/prettier/node",
+		"parserOptions": {
+			"project": "tsconfig.eslint.json"
+		},
+		"env": {
+			"jest": true
+		}
+	},
+	"jest": {
+		"preset": "ts-jest",
+		"testEnvironment": "node",
+		"globals": {
+			"ts-jest": {
+				"tsConfig": "tsconfig.jest.json"
+			}
+		}
+	}
+}
