@@ -78,6 +78,8 @@ function pluralize(ms: number, msAbs: number, n: number, long: string, short: st
 	return `${Math.round(ms / n)}${l ? ` ${long}${plural ? 's' : ''}` : short}`;
 }
 
+function ms(val: string, long?: boolean): number;
+function ms(val: number, long?: boolean): string;
 function ms(val: string | number, long = false) {
 	let abs;
 	let ms = 0;
@@ -93,7 +95,6 @@ function ms(val: string | number, long = false) {
 			}
 			return ms;
 		}
-		return abs;
 	}
 
 	if (typeof val === 'number' && isFinite(val)) {
