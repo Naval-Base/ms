@@ -22,7 +22,7 @@
 	},
 	"homepage": "https://github.com/Naval-Base/ms#readme",
 	"devDependencies": {
-		"@types/jest": "^24.9.1",
+		"@types/jest": "^25.0.0",
 		"@types/node": "^13.5.0",
 		"@typescript-eslint/eslint-plugin": "^2.17.0",
 		"@typescript-eslint/parser": "^2.17.0",
