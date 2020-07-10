@@ -43,6 +43,9 @@
 		},
 		"env": {
 			"jest": true
+		},
+		"rules": {
+			"@typescript-eslint/naming-convention": 0
 		}
 	},
 	"jest": {
