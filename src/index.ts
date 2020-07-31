@@ -5,9 +5,10 @@ const enum DURATION {
 	DAY = HOUR * 24,
 	WEEK = DAY * 7,
 	YEAR = DAY * 365.25,
+	DECADE = YEAR * 10,
 }
 
-const SEPERATORS = [' ', '.', ',', '-'];
+const SEPERATORS = [' ', '.', ',', '-', '/', '|'];
 const REGEX = /^(-?(?:\d+)?\.?\d+) *([a-z]+)?$/;
 
 function tokenize(str: string) {
@@ -37,32 +38,51 @@ function tokenize(str: string) {
 
 function convert(num: number, type: string) {
 	switch (type) {
+		case 'decadas':
+		case 'decada':
+		case 'decade':
+		case 'dec':
+			return num * DURATION.DECADE;
+		case 'anos':
+		case 'ano':
 		case 'years':
 		case 'year':
 		case 'yrs':
 		case 'yr':
 		case 'y':
 			return num * DURATION.YEAR;
+		case 'semanas':
+		case 'semana':
+		case 'sem':
 		case 'weeks':
 		case 'week':
 		case 'w':
 			return num * DURATION.WEEK;
+		case 'dias':
+		case 'dia':
 		case 'days':
 		case 'day':
 		case 'd':
 			return num * DURATION.DAY;
+		case 'horas':
+		case 'hora':
 		case 'hours':
 		case 'hour':
 		case 'hrs':
 		case 'hr':
 		case 'h':
 			return num * DURATION.HOUR;
+		case 'minutos':
+		case 'minuto':
 		case 'minutes':
 		case 'minute':
 		case 'mins':
 		case 'min':
 		case 'm':
 			return num * DURATION.MINUTE;
+		case 'segundos':
+		case 'segundo':
+		case 'seg':
 		case 'seconds':
 		case 'second':
 		case 'secs':
@@ -99,6 +119,7 @@ function ms(val: string | number, long = false) {
 
 	if (typeof val === 'number' && isFinite(val)) {
 		abs = Math.abs(val);
+		if (abs >= DURATION.YEAR) return pluralize(val, abs, DURATION.YEAR, 'year', 'y', long);
 		if (abs >= DURATION.DAY) return pluralize(val, abs, DURATION.DAY, 'day', 'd', long);
 		if (abs >= DURATION.HOUR) return pluralize(val, abs, DURATION.HOUR, 'hour', 'h', long);
 		if (abs >= DURATION.MINUTE) return pluralize(val, abs, DURATION.MINUTE, 'minute', 'm', long);
